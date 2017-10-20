@@ -1,7 +1,6 @@
 """
 Markdown extension for modifying local links to Django static links
-Author: Melvin Koh <melvinkcx@gmail.com>
-
+Author: Melvin Koh
 
 Eg:
     Markdown:
@@ -20,9 +19,10 @@ Eg:
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from . import Extension
-from ..treeprocessors import Treeprocessor
 import re
+
+from markdown import Extension
+from markdown.treeprocessors import Treeprocessor
 
 
 class DjangoStaticImageTreeProcessor(Treeprocessor):
