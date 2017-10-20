@@ -41,9 +41,9 @@ class DjangoStaticImageTreeProcessor(Treeprocessor):
             if img.get('src'): # If src attribute exists
                 if not self.local_source_regex.search(img.get('src')): # If it's local source
                     if not self.config['prefix']: # Check if prefix is set
-                        img.set('src', '{% static \'' + img.get('src') + ' %}')
+                        img.set('src', '{% static \'' + img.get('src') + '\' %}')
                     else:
-                        img.set('src', '{% static \'' + self.config['prefix'] + '/' + img.get('src') + ' %}')
+                        img.set('src', '{% static \'' + self.config['prefix'] + '/' + img.get('src') + '\' %}')
 
 
 class DjangoStaticImageExtension(Extension):
