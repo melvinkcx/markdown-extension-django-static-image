@@ -25,3 +25,8 @@ class DjangoStaticImageTest(unittest.TestCase):
     def test_extension_config(self):
         """ This test tests if Prefix configuration works as expected """
         pass
+
+if __name__ == '__main__':
+    test_suite = unittest.TestLoader().loadTestsFromTestCase(DjangoStaticImageTest)
+    test_runner = unittest.TextTestRunner()
+    result = test_runner.run(test_suite)
