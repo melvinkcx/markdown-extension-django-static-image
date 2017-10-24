@@ -10,6 +10,7 @@ setup(name='markdown-djangostaticimage',
       py_modules=['django_static_image'],
       keywords="django markdown static html text filter",
       test_suite='tests',
+      test_require=['markdown'],
       classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Environment :: Console',
