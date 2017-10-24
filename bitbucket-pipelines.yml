@@ -13,4 +13,4 @@ pipelines:
           - pip
         script: # Modify the commands below to build your repository.
           - pip install -r requirements.txt
-          - coverage run tests/test_extension.py
+          - python -m unittest tests/test_extension.py
