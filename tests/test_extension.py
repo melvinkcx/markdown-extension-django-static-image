@@ -33,7 +33,6 @@ class DjangoStaticImageTest(unittest.TestCase):
     def test_img_tag_with_external_source(self):
         """ This test tests if the extension ignores image with external source """
         text = """![profile_pic](https://melvinkoh.herokuapp.com/static/images/profile_pic.png)"""
-
         expected_html = """<p><img alt="profile_pic" src="https://melvinkoh.herokuapp.com/static/images/profile_pic.png" /></p>"""
 
         md = markdown.Markdown(extensions=[DjangoStaticImageExtension()])
@@ -42,7 +41,12 @@ class DjangoStaticImageTest(unittest.TestCase):
 
     def test_extension_config(self):
         """ This test tests if Prefix configuration works as expected """
-        pass
+        text = """![profile_pic](images/profile_pic.png)"""
+        expected_html = """<p><img alt="profile_pic" src="{% static 'blog/images/profile_pic.png' %}" /></p>"""
+
+        md = markdown.Markdown(extensions=[DjangoStaticImageExtension(prefix='blog/')])
+        html = md.convert(text)
+        self.assertEqual(html,expected_html)
 
 if __name__ == '__main__':
     test_suite = unittest.TestLoader().loadTestsFromTestCase(DjangoStaticImageTest)

@@ -43,13 +43,15 @@ class DjangoStaticImageTreeProcessor(Treeprocessor):
                     if not self.config['prefix']: # Check if prefix is set
                         img.set('src', '{% static \'' + img.get('src') + '\' %}')
                     else:
+                        if self.config['prefix'].endswith('/'):
+                            self.config['prefix'] = self.config['prefix'][:-1]
                         img.set('src', '{% static \'' + self.config['prefix'] + '/' + img.get('src') + '\' %}')
 
 
 class DjangoStaticImageExtension(Extension):
     def __init__(self, **kwargs):
         # Initialize Configurations
-        self.config = {'prefix': [None, 'Empty prefix']}
+        self.config = {'prefix': ['', 'Empty prefix']}
         super(DjangoStaticImageExtension, self).__init__(**kwargs)
 
     def extendMarkdown(self, md, md_globals):
