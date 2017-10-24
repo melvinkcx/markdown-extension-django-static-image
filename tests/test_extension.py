@@ -7,7 +7,7 @@ Author: Melvin Koh
 import markdown
 import unittest
 
-from django_static_image import *
+from django_static_image import DjangoStaticImageExtension
 
 
 class DjangoStaticImageTest(unittest.TestCase):
