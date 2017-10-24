@@ -12,5 +12,5 @@ pipelines:
         caches:
           - pip
         script: # Modify the commands below to build your repository.
-          - pip install -r requirements/test-requirements.txt
-          - coverage run tests/test_extension.py
+          - pip install -r requirements.txt
+          - python -m unittest tests/test_extension.py
